@@ -48,14 +48,13 @@ export class StudentInfoComponent implements OnInit {
     this.studentService.getStudent().subscribe((Response) => { this.getStudents = Response }, (error) => { console.log(error) ;
     });
   }
-
   /*
     for open pop up modal
   */
   openModal(id:Stud) {
     this._NgbModal.open(DeleteStudentComponent)
     this.studentService.getStudentById(id);
-    
+
    // this.get()
   }
 
