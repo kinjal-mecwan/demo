@@ -1,0 +1,45 @@
+
+<div class="modal-header">
+    <h4 class="modal-title">Create Login</h4>
+    <a class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span class="fa fa-times-circle fa-lg text-secondary"></span>
+    </a>
+</div>
+<div class="modal-body">
+    <form [formGroup]="addLoginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label>StudentId:</label>
+         <!-- <input type="number" class="form-control" id="studentId" placeholder="Enter id"[(ngModel)]="post.studentId" name="studentId"
+         #studentId="ngModel">  -->
+           <select class="form-control drop-down" id="student_Id" formControlName="studentId">
+            <option selected>--select--</option>
+                <option *ngFor="let getStudent of allUsers;" [ngValue]=getStudent.studentId>{{getStudent.name}}</option>
+            </select> 
+            <div *ngIf="value['studentId'].touched && value['studentId'].invalid" class="invalid">
+                <div  class="text-danger" *ngIf="value['studentId'].errors && value['studentId'].errors['required']">select name</div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>UserNAME:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter UserName"  formControlName="userName">
+            <div *ngIf="value['userName'].touched && value['userName'].invalid" class="invalid">
+                <div  class="text-danger" *ngIf="value['userName'].errors && value['userName'].errors['required']">enter userName</div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Password:</label>
+            <input name="password" type="password" class="form-control" id="password-field" placeholder="Enter Password"  formControlName="password">
+            <div *ngIf="value['password'].touched && value['password'].invalid" class="invalid">
+                <div  class="text-danger" *ngIf="value['password'].errors && value['password'].errors['required']">enter Password</div>
+            </div>
+        </div>
+        <br />
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary"  [disabled]="!addLoginForm.valid">Submit</button>
+        </div>
+
+    </form>
+</div>

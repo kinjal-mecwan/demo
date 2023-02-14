@@ -1,0 +1,39 @@
+
+<div class="modal-header">
+    <h4 class="modal-title">Create Login</h4>
+    <a class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span class="fa fa-times-circle fa-lg text-secondary"></span>
+    </a>
+</div>
+<div class="modal-body">
+    <form  [formGroup]="getloginForm" >
+      
+            <input type="hidden" class="form-control" id="name" placeholder="Enter UserName"  formControlName="l_Id" >
+            
+       
+        <div class="form-group">
+            <label>StudentId:</label>
+        
+           <select class="form-control drop-down" id="student_Id" formControlName="studentId"  [attr.disabled]="_isDisabled === false">
+            <option selected>--select--</option>
+                <option *ngFor="let getStudent of allUsers;" value={{getStudent.studentId}}>{{getStudent.name}}</option>
+            </select> 
+            
+        </div>
+        <br />
+        <div class="form-group">
+            <label>UserNAME:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter UserName"  formControlName="userName" [attr.disabled]="_isDisabled === false">
+            
+        </div>
+        <br />
+        <div class="form-group">
+            <label>Password:</label>
+            <input name="text" type="password" class="form-control" id="password-field" placeholder="Enter Password"  formControlName="password"  [attr.disabled]="_isDisabled === false">
+            
+        </div>
+        <br />
+       
+
+    </form>
+</div>

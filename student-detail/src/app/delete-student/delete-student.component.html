@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Delete</h4>
+  <a class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span class="fa fa-times-circle fa-lg text-secondary"></span>
+  </a>
+</div>
+<div class="modal-body">
+  <h6>Are you want to Delete?</h6>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger" (click)="confirmDelete()">Ok</button>
+  <button type="button" class=" btn btn-primary" (click)="activeModal.close(false)">Cancel</button>
+</div>

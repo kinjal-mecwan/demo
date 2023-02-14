@@ -1,0 +1,79 @@
+
+<a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn btn-primary margin">Back</a>
+<div>
+    <div class="container py-3">
+        <div class=" row justify-content-center">
+            <div class="col-md-6 text-left bg-white rounded shadow py-3">
+                <div class="card margin-set">
+                    <div class="card-header">
+                        <h3>Edit Student Info </h3>
+                    </div>
+                    <form name="editStudentForm" #StudentInfo="ngForm" (ngSubmit)="StudentInfo.form.valid && onUpdate()" novalidate>
+                        <div class=" form-group margin-set">
+                            <label>Name:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" [(ngModel)]="editStudentForm.name" name="name"
+                                #name="ngModel" required>
+                                <span class="text-danger"
+                                *ngIf="(name.touched || StudentInfo.submitted) && name.errors">
+                                  Enter Student Name
+                                </span> 
+                        </div>
+                        <div class=" form-group margin-set">
+                            <label>Mobile_No:<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" [(ngModel)]="editStudentForm.mobile_no" name="mobile_no"
+                                #mobile_no="ngModel" pattern="^((\\+91-?)|0)?[0-9]{10}$" appPhoneNoValidate required>
+                                <div *ngIf="(mobile_no.invalid &&  StudentInfo.submitted) || mobile_no.dirty">
+                                    <span class="text-danger" *ngIf="mobile_no.errors?.required">Enter Mobile No.</span>
+                                    <span class="text-danger" *ngIf="mobile_no.errors?.pattern">Enter only 10 Digits</span>
+                                    <span class="text-danger" *ngIf="mobile_no.errors?.invalidPattern">First no should be 6,7,8,9</span>
+                                </div>
+                        </div>
+                        <div class=" form-group margin-set">
+                            <label>Address:<span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" [(ngModel)]="editStudentForm.address" name="address"
+                                #address="ngModel" required>
+                                <span class="text-danger"
+                                *ngIf="(address.touched || StudentInfo.submitted) && address.errors">
+                                  Enter Student Adderss
+                                </span> 
+                        </div>
+                        <div class=" form-group margin-set">
+                            <label>Pincode:<span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" [(ngModel)]="editStudentForm.pincode" name="pincode"
+                                #pincode="ngModel" pattern="^[0-9]{6}$" required>
+                                <div *ngIf="(pincode.invalid &&  StudentInfo.submitted) || pincode.dirty">
+                                    <span class="text-danger" *ngIf="pincode.errors?.required">Enter Pincode</span>
+                                    <span class="text-danger" *ngIf="pincode.errors?.pattern">Enter only 6 digits</span>
+                                </div>
+                        </div>
+                        <div class=" form-group margin-set">
+                            <label>EmailId:<span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" [(ngModel)]="editStudentForm.emailId" name="emailId"
+                                #emailId="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required >
+                                <div *ngIf="(emailId.invalid && StudentInfo.submitted) || emailId.dirty">
+                                    <span class="text-danger" *ngIf="emailId.errors?.required">Enter Email address</span>
+                                    <span class="text-danger" *ngIf="emailId.errors?.pattern">Email address is invalid</span>
+                                 
+                                </div>      
+                        </div>
+                        <div class=" form-group margin-set">
+                            <label>Password:<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" [(ngModel)]="editStudentForm.password" name="password"
+                                #password="ngModel"  appPasswordPattern required>
+                            <div *ngIf="(password.invalid &&  StudentInfo.submitted) || password.touched">
+                                <span class="text-danger" *ngIf="password.errors?.required">Enter Password</span>  
+                                <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+                                    Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                    letter and 1 number
+                                </span>  
+                            </div>
+                        </div>
+                      
+                        <button type="submit" class="btn btn-success margin-set"  [disabled]="!StudentInfo.form.valid" >Submit</button>
+                        <button type="reset"   class="btn btn-danger margin-left margin-set" (click)="onReset(StudentInfo)">Cancel</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
