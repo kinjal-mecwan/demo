@@ -55,6 +55,7 @@ export class StudentInfoComponent implements OnInit {
   openModal(id:Stud) {
     this._NgbModal.open(DeleteStudentComponent)
     this.studentService.getStudentById(id);
+    
    // this.get()
   }
 
